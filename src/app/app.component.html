@@ -1,0 +1,27 @@
+<h1>Angular PrimeNg 🔥🔥</h1>
+<p-table [value]="cars" [columns]="cols" [(selection)]="selectedRows">
+	<ng-template pTemplate="header" let-columns>
+		<tr>
+      <th>
+        <p-checkbox (click)="selectRow(e.checked)" #e></p-checkbox>
+      </th>
+			<th *ngFor="let col of columns">
+				{{col.header}}
+			</th>
+
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="body" let-rowData let-columns="columns">
+		<tr [pSelectableRow]="rowData">
+      <td>
+            <p-tableCheckbox [value]="rowData" [disabled]="rowData.year > 2000">
+        </p-tableCheckbox>
+
+      </td>
+			<td *ngFor="let col of columns">
+				{{rowData[col.field]}}
+			</td>
+
+		</tr>
+	</ng-template>
+</p-table>
